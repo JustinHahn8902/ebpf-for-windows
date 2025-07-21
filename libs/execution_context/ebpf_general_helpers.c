@@ -212,6 +212,13 @@ ebpf_helper_function_prototype_t ebpf_core_helper_function_prototype_array[] = {
       EBPF_ARGUMENT_TYPE_ANYTHING,
       EBPF_ARGUMENT_TYPE_PTR_TO_READABLE_MEM,
       EBPF_ARGUMENT_TYPE_CONST_SIZE}},
+    {EBPF_HELPER_FUNCTION_PROTOTYPE_HEADER,
+     BPF_FUNC_hash,
+     "bpf_hash",
+     EBPF_RETURN_TYPE_INTEGER,
+     {EBPF_ARGUMENT_TYPE_PTR_TO_READABLE_MEM,
+      EBPF_ARGUMENT_TYPE_CONST_SIZE_OR_ZERO,
+      EBPF_ARGUMENT_TYPE_CONST_SIZE_OR_ZERO}},
 };
 
 #ifdef __cplusplus

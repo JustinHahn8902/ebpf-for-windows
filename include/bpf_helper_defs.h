@@ -514,3 +514,22 @@ EBPF_HELPER(int, bpf_perf_event_output, (void* ctx, void* perf_event_array, uint
 #ifndef __doxygen
 #define bpf_perf_event_output ((bpf_perf_event_output_t)BPF_FUNC_perf_event_output)
 #endif
+
+/**
+ * Ported from https://github.com/aappleby/smhasher
+ * Quote from https://github.com/aappleby/smhasher/blob/61a0530f28277f2e850bfc39600ce61d02b518de/src/MurmurHash3.cpp#L2
+ * "MurmurHash3 was written by Austin Appleby, and is placed in the public domain."
+ *
+ * @brief Computes a 64-bit hash of data. Modified from 128-bit Murmur3 Hash
+ *
+ * Murmur3 128-bit hash modified for 64-bit
+ *
+ * @param data           Pointer to the start of data to be hashed
+ * @param length_in_bits Length of the data in bits (≡ 8 × bytes for ASCII names)
+ * @param seed           Any 64‑bit seed (0 is fine; use a random value for anti‑DOS)
+ * @return               64‑bit Murmur3 hash
+ */
+EBPF_HELPER(uint64_t, bpf_hash, (const uint8_t* data, uint32_t length_in_bits, uint64_t seed));
+#ifndef __doxygen
+#define bpf_hash ((bpf_hash)BPF_FUNC_hash)
+#endif

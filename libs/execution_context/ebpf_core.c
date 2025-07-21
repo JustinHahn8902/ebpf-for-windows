@@ -8,6 +8,7 @@
 #include "ebpf_epoch.h"
 #include "ebpf_extension_uuids.h"
 #include "ebpf_handle.h"
+#include "ebpf_hash.h"
 #include "ebpf_link.h"
 #include "ebpf_maps.h"
 #include "ebpf_native.h"
@@ -158,6 +159,8 @@ static const void* _ebpf_general_helpers[] = {
     (void*)&_ebpf_core_get_time_ms,
     // Perf event array (perf buffer) output.
     (void*)&_ebpf_core_perf_event_output,
+    // murmur3_32 hash helper
+    (void*)&ebpf_hash,
 };
 
 static const ebpf_helper_function_addresses_t _ebpf_global_helper_function_dispatch_table = {
